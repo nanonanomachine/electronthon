@@ -21,3 +21,9 @@ gulp.task('dest-css', function(){
   return gulp.src("static/**/*.css")
     .pipe(gulp.dest('app'));
 })
+
+gulp.task('start', ['compile'], function(){
+  gulp.watch('src/**/*', ['compile-babel']); 
+  gulp.watch('static/**/*.haml', ['compile-haml']); 
+  gulp.watch('static/**/*.css', ['dest-css']); 
+})
