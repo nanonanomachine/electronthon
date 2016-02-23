@@ -1,8 +1,42 @@
 !!!
 %html
   %head
-    %title Electron Read Us
+    %title Materialized Design Markdown Editor
     %meta{ charset: "utf-8" }
-    %link{ rel: "stylesheet", href: "./application.css" }
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    %link{ rel: "stylesheet", href: "../bower_components/materialize/bin/materialize.css", media: "screen,projection" }
+    %link{ rel: "stylesheet", href: "../bower_components/split-pane/split-pane.css", media: "screen,projection" }
+    %link{ rel: "stylesheet", href: "../bower_components/codemirror/lib/codemirror.css", media: "screen,projection" }
+    %link{ rel: "stylesheet", href: "../bower_components/highlightjs/styles/default.css", media: "screen,projection" }
+    %link{ rel: "stylesheet", href: "./application.css", media: "screen,projection"}
+
   %body
-    %h1 Hello, electron!
+    %nav
+      %div{ id: "nav_toolbar", class: "nav-wrapper" }
+        %span{ class: "brand-logo" }
+          %span{ class:"hide-on-small-and-down description" } Materialized Design Markdown Editor
+        %ul{ id: "nav-mobile", class: "right" }  
+          %li
+            %a{ v-on:click.stop.prevent: "load" } Load
+          %li
+            %a{ v-on:click.stop.prevent: "save" } Save
+    %div{ class: "split-container" }
+      %div{ id: "editor", class: "split-pane fixed-left" }
+        %div{ id: "left-component", class: "split-pane-component" }
+          %textarea{ id: "editor_textarea", class: "materialize-textarea", v-model: "input" }
+        %div{ class: "split-pane-divider" }
+        %div{ id: "right-component", class: "split-pane-component markdown-body", v-html: "input | marked" }
+    %footer{ id: "footer", class: "page-footer" }
+      %div{ class: "footer-copyright" }
+        %div{ v-html: "currentPath" }
+    %script{ type: "text/javascript", src: "../bower_components/jquery/dist/jquery.js"}
+    %script{ type: "text/javascript", src: "../bower_components/hammerjs/hammer.js"}
+    %script{ type: "text/javascript", src: "../bower_components/codemirror/lib/codemirror.js"}
+    %script{ type: "text/javascript", src: "../bower_components/markdown-it/dist/markdown-it.js"}
+    %script{ type: "text/javascript", src: "../bower_components/emojify/dist/js/emojify.js"}
+    %script{ type: "text/javascript", src: "../bower_components/highlightjs/highlight.pack.js"}
+    %script{ type: "text/javascript", src: "application.js"}
+    %script{ type: "text/javascript", src: "../bower_components/materialize/bin/materialize.js"}
+    %script{ type: "text/javascript", src: "../bower_components/split-pane/split-pane.js"}
+    %script{ type: "text/javascript", src: "../bower_components/vue/dist/vue.js"}
+    %script{ type: "text/javascript", src: "editor.js"}

@@ -1,0 +1,27 @@
+{
+  "name": "electronthon",
+  "version": "0.0.1",
+  "homepage": "https://github.com/nanonanomachine/electronthon",
+  "authors": [
+    "nanonanomachine <koyama.gakugai@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "split-pane": "~0.8.0",
+    "materialize": "~0.97.5",
+    "codemirror": "~5.12.0",
+    "vue": "~1.0.16",
+    "markdown-it": "~6.0.0",
+    "emojify": "~1.1.0",
+    "highlightjs": "~9.1.0",
+    "hammerjs": "^2.0.6"
+  }
+}
