@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
-gulp.task('compile', ['compile-babel', 'compile-haml']);
+gulp.task('compile', ['compile-babel', 'compile-haml', 'dest-css']);
 
 gulp.task('compile-babel', function(){
   return gulp.src('src/**/*.js')
@@ -14,5 +14,10 @@ gulp.task('compile-babel', function(){
 gulp.task('compile-haml', function(){
   return gulp.src("static/**/*.haml")
     .pipe($.haml())
+    .pipe(gulp.dest('app'));
+})
+
+gulp.task('dest-css', function(){
+  return gulp.src("static/**/*.css")
     .pipe(gulp.dest('app'));
 })
